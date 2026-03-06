@@ -6,7 +6,10 @@
 
 **🤗 Dataset:**: <https://huggingface.co/datasets/web3se/smart-contract-intent-vul-dataset>
 
-**🤗 Models:**: <https://huggingface.co/web3se/SmartBERT-v2>
+**🤗 Models:**:
+
+- [SmartBERT V2](https://huggingface.co/web3se/SmartBERT-v2)
+- [SmartIntent V2](https://github.com/web3se-lab/web3-sekit/releases/tag/V2)
 
 ## Toolkit
 
@@ -36,7 +39,7 @@
     - [tokenize](https://web3.devil.ren/smartbert/tokenize)
     - [code tree](https://web3.devil.ren/smartbert/tree).
 
-### Project-2: SmartIntentNN
+### Project-2: SmartIntent
 
 ![SmartIntentNN Example](./imgs/example.png)
 
@@ -118,22 +121,34 @@ Ground truth label distribution for Vulnerability data:
 
 ### Models
 
-🤖 Access **SmartIntentNN V1** models: <https://github.com/web3se-lab/web3-sekit-vue/releases/tag/V1>
+🤖 Access **SmartIntent** models: <https://github.com/web3se-lab/web3-sekit/releases>
+
+**SmartIntentNN V1**
 
 - Download `v1.zip`, then unzip and move them to `/tf/models/v1/`.
 - For **Universal Sentence Encoder**, download <https://tfhub.dev/google/universal-sentence-encoder/4>, then move it to `/tf/models/` and rename the dir as `universal-sentence-encoder`.
 - For **K-means intent highlight model**, download `kmeans-model.json`, then move it to `/tf/models/kmeans-model.json`.
 
+**SmartIntent V2**
+
+- Download `v2.zip`, then unzip and move them to `/tf/models/v2/`.
+- **SmartBERT** needs to be deployed separately. Model address: <https://huggingface.co/web3se/SmartBERT-v2>.
+
 The structure of directory should be like the following figure:
 
 <img height=320px src=./imgs/dir.png>
 
-How to run these models in Tensorflow.js?
+How to run V1 models in Tensorflow.js?
 
 - To predict: `node tf/v1/use-high-bilstm-x2.js predict 1`
 - To evaluate: `node tf/v1/use-high-bilstm-x2.js evaluate`
 - To train: `node tf/v1/use-high-bilstm-x2.js train`
 - To summary: `node tf/v1/use-high-bilstm-x2.js summary`
+
+How to run V2 models?
+
+- **Tensorflow.js**: Similar to V1, check scripts in `tf/v2`.
+- **Python**: Refer to <https://github.com/web3se-lab/SmartIntent-py>.
 
 ### Training & Evaluating Settings
 
@@ -166,7 +181,8 @@ npm install
 
 ## Database
 
-We have released the `sql.gz` on Hugging Face. You can go to the address <https://huggingface.co/datasets/web3se/smart-contract-intent-vul-dataset> to download the complete dataset and import it into MySQL.
+We have released the `sql.gz` on Hugging Face.
+You can go to the address <https://huggingface.co/datasets/web3se/smart-contract-intent-vul-dataset> to download the complete dataset and import it into MySQL.
 
 If you would like to set up a localhost database, we prepare a `docker-compose.yml` for you.
 
@@ -309,11 +325,7 @@ EXAMPLE: [embed](https://web3.devil.ren/smartbert/embed) is used to convert smar
 }
 ```
 
-Continuously writing and updating...
-
 ## Resource
-
-### DataSource
 
 1. <https://bscscan.com>
 2. <https://etherscan.io>
@@ -325,16 +337,10 @@ Continuously writing and updating...
 8. <https://tools.staysafu.org>
 9. <https://github.com/Messi-Q/Smart-Contract-Dataset>
 
-### Dependency
+## Contributor
 
-1. [TensorFlow.js](https://js.tensorflow.org/api/latest/)
-2. [TensorFlow Hub](https://tfhub.dev/)
-3. [Universal Sentence Encoder V4](https://tfhub.dev/google/universal-sentence-encoder/4)
-
-## Contributors
-
-- [Youwei Huang](https://www.devil.ren) – Project initiator, first author, and principal researcher
-- [Sen Fang](https://tomasandersonfang.github.io/) – Model development, paper review, and principal researcher (model)
+- [Youwei Huang](https://www.devil.ren)
+- [Sen Fang](https://tomasandersonfang.github.io)
 
 ## Acknowledgment
 
