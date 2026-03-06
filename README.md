@@ -29,7 +29,7 @@
 **Technical Points:**
 
 - Built with **BERT-based** pre-training models.
-- Encode **smart contract** function-level code into embeddings.
+- Encode **smart contract** _function-level_ code into embeddings.
 - MLM-trained on **16,000+** (V2) real-world smart contracts.
 - Serving APIs (POST):
     - [embed](https://web3.devil.ren/smartbert/embed)
@@ -59,9 +59,9 @@
 
 **Technical Points:**
 
-- **SmartIntentNN V1.0** is trained and evaluated on **Tensorflow.js**.
-- **SmartIntentNN V1.0** employs a **Universal Sentence Encoder** to generate smart contract embeddings.
-- The **intent highlight model** is trained using **K-means clustering**.
+- **SmartIntentNN V1** is trained and evaluated on **Tensorflow.js**.
+- **SmartIntentNN V1** employs a **Universal Sentence Encoder** to generate smart contract embeddings.
+- **SmartIntentNN V1** integrates an **intent highlight model**, trained using **K-means clustering**.
 - **SmartIntent V2** integrates **SmartBERT** to embed smart contracts.
 
 ## Dataset
@@ -118,7 +118,7 @@ Ground truth label distribution for Vulnerability data:
 
 ### Models
 
-🤖 Acces **SmartIntentNN V1.0** models: <https://github.com/web3se-lab/web3-sekit-vue/releases/tag/V1>
+🤖 Access **SmartIntentNN V1** models: <https://github.com/web3se-lab/web3-sekit-vue/releases/tag/V1>
 
 - Download `v1.zip`, then unzip and move them to `/tf/models/v1/`.
 - For **Universal Sentence Encoder**, download <https://tfhub.dev/google/universal-sentence-encoder/4>, then move it to `/tf/models/` and rename the dir as `universal-sentence-encoder`.
@@ -156,7 +156,7 @@ Scope: 20000, 10000
 
 Before using this program, you will need to install **nodejs** and **npm** tools first, then you install dependencies.
 
-Our recommended version is Node.js v16+.
+Our recommended version is Node.js v20+.
 
 ```bash
 yarn
@@ -165,6 +165,8 @@ npm install
 ```
 
 ## Database
+
+We have released the `sql.gz` on Hugging Face. You can go to the address <https://huggingface.co/datasets/web3se/smart-contract-intent-vul-dataset> to download the complete dataset and import it into MySQL.
 
 If you would like to set up a localhost database, we prepare a `docker-compose.yml` for you.
 
@@ -275,3 +277,66 @@ EXAMPLE: [embed](https://web3.devil.ren/smartbert/embed) is used to convert smar
 1. [TensorFlow.js](https://js.tensorflow.org/api/latest/)
 2. [TensorFlow Hub](https://tfhub.dev/)
 3. [Universal Sentence Encoder V4](https://tfhub.dev/google/universal-sentence-encoder/4)
+
+## Paper
+
+```tex
+@article{huang2025smart,
+  title={Smart Contract Intent Detection with Pre-trained Programming Language Model},
+  author={Huang, Youwei and Li, Jianwen and Fang, Sen and Li, Yao and Yang, Peng and Hu, Bin},
+  journal={arXiv preprint arXiv:2508.20086},
+  year={2025}
+}
+```
+
+```tex
+@inproceedings{huang2025deep,
+  title={Deep smart contract intent detection},
+  author={Huang, Youwei and Fang, Sen and Li, Jianwen and Hu, Bin and Tao, Jiachun and Zhang, Tao},
+  booktitle={2025 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)},
+  pages={124--135},
+  year={2025},
+  organization={IEEE}
+}
+```
+
+```tex
+@article{huang2022smartintentnn,
+  title={Smartintentnn: Towards smart contract intent detection},
+  author={Huang, Youwei and Fang, Sen and Li, Jianwen and Hu, Bin and Zhang, Tao},
+  journal={arXiv preprint arXiv:2211.13670},
+  year={2022}
+}
+```
+
+Continuously writing and updating...
+
+## Resource
+
+### DataSource
+
+1. <https://bscscan.com>
+2. <https://etherscan.io>
+3. <https://tokensniffer.com>
+4. <https://bscheck.eu>
+5. <https://scamsniper.net>
+6. <https://aphd.github.io/smart-corpus>
+7. <https://dashboard.tenderly.co/explorer>
+8. <https://tools.staysafu.org>
+9. <https://github.com/Messi-Q/Smart-Contract-Dataset>
+
+### Dependency
+
+1. [TensorFlow.js](https://js.tensorflow.org/api/latest/)
+2. [TensorFlow Hub](https://tfhub.dev/)
+3. [Universal Sentence Encoder V4](https://tfhub.dev/google/universal-sentence-encoder/4)
+
+## Contributors
+
+- [Youwei Huang](https://www.devil.ren) – Project initiator, first author, and principal researcher
+- [Sen Fang](https://tomasandersonfang.github.io/) – Model development, paper review, and principal researcher (model)
+
+## Acknowledgment
+
+- [Institute of Intelligent Computing Technology, Suzhou, CAS](http://iict.ac.cn/)
+- [Macau University of Science and Technology](http://www.must.edu.mo)
